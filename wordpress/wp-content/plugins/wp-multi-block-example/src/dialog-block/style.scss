@@ -1,0 +1,81 @@
+/**
+ * Dialog Block Styles
+ * Applied both in editor and frontend
+ */
+
+.wp-block-wp-multi-block-example-dialog-block {
+	.wp-block-dialog-trigger {
+		background-color: #2271b1;
+		color: white;
+		border: none;
+		padding: 10px 20px;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 16px;
+		transition: background-color 0.2s ease;
+		
+		&:hover {
+			background-color: #135e96;
+		}
+		
+		&:focus {
+			outline: 2px solid #2271b1;
+			outline-offset: 2px;
+		}
+	}
+}
+
+.wp-block-dialog {
+	max-width: 600px;
+	width: 90vw;
+	border: none;
+	border-radius: 8px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+	padding: 0;
+	
+	&::backdrop {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	
+	.wp-block-dialog-content {
+		padding: 0;
+	}
+	
+	.wp-block-dialog-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 20px 10px;
+		border-bottom: 1px solid #e0e0e0;
+		
+		h2 {
+			margin: 0;
+			font-size: 1.5em;
+			color: #333;
+		}
+		
+		.wp-block-dialog-close {
+			background: none;
+			border: none;
+			font-size: 24px;
+			cursor: pointer;
+			color: #666;
+			padding: 5px;
+			line-height: 1;
+			
+			&:hover {
+				color: #333;
+			}
+		}
+	}
+	
+	.wp-block-dialog-body {
+		padding: 20px;
+		
+		p {
+			margin: 0 0 1em;
+			line-height: 1.6;
+			color: #555;
+		}
+	}
+}
