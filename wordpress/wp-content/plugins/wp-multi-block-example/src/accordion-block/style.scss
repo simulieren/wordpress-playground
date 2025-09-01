@@ -1,0 +1,45 @@
+.wp-block-accordion {
+	.accordion-item {
+		margin-bottom: 10px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		overflow: hidden;
+	}
+
+	.accordion-summary {
+		padding: 15px;
+		background: #f7f7f7;
+		cursor: pointer;
+		font-weight: 600;
+		list-style: none;
+		position: relative;
+		padding-left: 35px;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		&::before {
+			content: '▶';
+			position: absolute;
+			left: 15px;
+			top: 50%;
+			transform: translateY(-50%);
+			transition: transform 0.2s;
+		}
+
+		&:hover {
+			background: #efefef;
+		}
+	}
+
+	details[open] .accordion-summary::before {
+		transform: translateY(-50%) rotate(90deg);
+	}
+
+	.accordion-details {
+		padding: 15px;
+		background: #fff;
+		border-top: 1px solid #eee;
+	}
+}

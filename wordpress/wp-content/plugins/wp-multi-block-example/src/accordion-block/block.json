@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wp-multi-block-example/accordion",
+	"version": "0.1.0",
+	"title": "Accordion",
+	"category": "design",
+	"icon": "list-view",
+	"description": "A simple accordion with collapsible items using details and summary tags.",
+	"example": {},
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [
+				{
+					"title": "Item 1",
+					"content": "Content for item 1",
+					"open": false
+				}
+			]
+		},
+		"enableFAQSchema": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"]
+	},
+	"textdomain": "wp-multi-block-example",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

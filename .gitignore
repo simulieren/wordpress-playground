@@ -1,0 +1,8 @@
+# WordPress
+wordpress/wp-admin
+wordpress/wp-includes
+wordpress/*.*
+!wordpress/wp-content/*
+!wordpress/wp-content/plugins
+!wordpress/wp-content/themes
+wordpress/wp-content/themes/twenty*

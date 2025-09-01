@@ -1,0 +1,67 @@
+.wp-block-accordion-editor {
+	.accordion-item-editor {
+		margin-bottom: 10px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 10px;
+	}
+
+	.accordion-header {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.accordion-toggle {
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 5px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+	}
+
+	.accordion-arrow {
+		font-size: 12px;
+		transition: transform 0.2s;
+	}
+
+	.accordion-title {
+		flex: 1;
+		font-weight: 600;
+	}
+
+	.accordion-content {
+		padding: 15px 10px 10px 34px;
+		border-top: 1px solid #eee;
+		margin-top: 10px;
+		min-height: 80px;
+		
+		// Style the RichText paragraph
+		p {
+			margin: 0;
+			min-height: 40px;
+			padding: 8px;
+			background: #fafafa;
+			border-radius: 4px;
+			
+			&:hover {
+				background: #f5f5f5;
+			}
+			
+			&:focus {
+				background: #fff;
+				outline: 2px solid #007cba;
+				outline-offset: -2px;
+			}
+			
+			// Empty state
+			&[data-is-placeholder-visible="true"] {
+				opacity: 0.7;
+			}
+		}
+	}
+}
