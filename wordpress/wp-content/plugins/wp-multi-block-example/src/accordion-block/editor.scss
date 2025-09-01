@@ -1,67 +1,138 @@
 .wp-block-accordion-editor {
 	.accordion-item-editor {
-		margin-bottom: 10px;
-		border: 1px solid #ddd;
-		border-radius: 4px;
-		padding: 10px;
+		margin-bottom: 16px;
+		border: 1px solid #e0e0e0;
+		border-radius: 2px;
+		background: #fff;
+		overflow: hidden;
 	}
 
 	.accordion-header {
+		display: grid;
+		grid-template-columns: auto 1fr auto auto;
+		align-items: center;
+		gap: 12px;
+		padding: 16px;
+		background: #f9f9f9;
+		border-bottom: 1px solid #e0e0e0;
+	}
+
+	.accordion-controls {
 		display: flex;
 		align-items: center;
-		gap: 10px;
+		gap: 12px;
+
+		.components-base-control {
+			margin-bottom: 0;
+
+			.components-base-control__field {
+				margin-bottom: 0;
+			}
+
+			.components-base-control__label {
+				font-size: 11px;
+				font-weight: 500;
+				text-transform: uppercase;
+				color: #757575;
+				margin-bottom: 4px;
+			}
+
+			.components-base-control__help {
+				display: none; // Hide help text for cleaner look
+			}
+		}
+
+		.components-text-control__input {
+			width: 40px;
+			height: 36px;
+			font-size: 18px;
+			text-align: center;
+			padding: 6px;
+			border-radius: 2px;
+		}
+
+		.components-button {
+			height: 36px;
+			padding: 0 12px;
+		}
 	}
 
 	.accordion-toggle {
 		background: none;
 		border: none;
 		cursor: pointer;
-		padding: 5px;
+		padding: 8px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 24px;
-		height: 24px;
+		width: 32px;
+		height: 32px;
+		border-radius: 2px;
+		transition: background-color 0.1s;
+
+		&:hover {
+			background: rgba(0, 0, 0, 0.05);
+		}
+
+		&:focus {
+			outline: 1.5px solid #007cba;
+			outline-offset: -1.5px;
+		}
 	}
 
 	.accordion-arrow {
-		font-size: 12px;
+		font-size: 14px;
 		transition: transform 0.2s;
 	}
 
 	.accordion-title {
-		flex: 1;
-		font-weight: 600;
+		font-weight: 500;
+		font-size: 16px;
+
+		.rich-text {
+			min-height: 20px;
+		}
 	}
 
 	.accordion-content {
-		padding: 15px 10px 10px 34px;
-		border-top: 1px solid #eee;
-		margin-top: 10px;
-		min-height: 80px;
-		
+		padding: 20px;
+		background: #fff;
+
 		// Style the RichText paragraph
 		p {
 			margin: 0;
 			min-height: 40px;
-			padding: 8px;
+			padding: 12px;
 			background: #fafafa;
-			border-radius: 4px;
-			
+			border: 1px solid #e0e0e0;
+			border-radius: 2px;
+			font-size: 14px;
+			line-height: 1.4;
+
 			&:hover {
-				background: #f5f5f5;
+				border-color: #ccc;
 			}
-			
+
 			&:focus {
 				background: #fff;
-				outline: 2px solid #007cba;
-				outline-offset: -2px;
+				border-color: #007cba;
+				outline: 1.5px solid #007cba;
+				outline-offset: -1.5px;
 			}
-			
+
 			// Empty state
 			&[data-is-placeholder-visible="true"] {
-				opacity: 0.7;
+				opacity: 0.6;
+				font-style: italic;
 			}
 		}
+	}
+
+	// Add Accordion Item button styling
+	.components-button.is-primary {
+		margin-top: 16px;
+		height: 40px;
+		padding: 0 16px;
+		border-radius: 2px;
 	}
 }

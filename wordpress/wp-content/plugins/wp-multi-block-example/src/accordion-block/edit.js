@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-editor';
-import { Button, PanelBody, ToggleControl } from '@wordpress/components';
+import { Button, PanelBody, ToggleControl, TextControl } from '@wordpress/components';
 import './editor.scss';
 
 /**
@@ -53,7 +53,8 @@ export default function Edit({ attributes, setAttributes }) {
 		newItems.push({
 			title: `Item ${items.length + 1}`,
 			content: `Content for item ${items.length + 1}`,
-			open: false
+			open: false,
+			emoji: ''
 		});
 		setAttributes({ items: newItems });
 	};
@@ -153,7 +154,9 @@ export default function Edit({ attributes, setAttributes }) {
 								onClick={() => toggleItem(index)}
 								aria-expanded={item.open}
 							>
-								<span className="accordion-arrow">{item.open ? '▼' : '▶'}</span>
+								<span className="accordion-arrow">
+								{item.emoji || (item.open ? '▼' : '▶')}
+							</span>
 							</button>
 							<RichText
 								tagName="div"
@@ -162,13 +165,22 @@ export default function Edit({ attributes, setAttributes }) {
 								onChange={(value) => updateItem(index, 'title', value)}
 								placeholder={__('Enter title...', 'wp-multi-block-example')}
 							/>
-							<Button
-								isDestructive
-								size="small"
-								onClick={() => removeItem(index)}
-							>
-								{__('Remove', 'wp-multi-block-example')}
-							</Button>
+							<div className="accordion-controls">
+								<TextControl
+									label={__('Emoji', 'wp-multi-block-example')}
+									value={item.emoji}
+									onChange={(value) => updateItem(index, 'emoji', value)}
+									placeholder="😊"
+									help={__('Optional emoji to replace the default arrow', 'wp-multi-block-example')}
+								/>
+								<Button
+									isDestructive
+									size="small"
+									onClick={() => removeItem(index)}
+								>
+									{__('Remove', 'wp-multi-block-example')}
+								</Button>
+							</div>
 						</div>
 						{item.open && (
 							<div className="accordion-content">

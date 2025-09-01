@@ -20,7 +20,8 @@ return array(
 					array(
 						'title' => 'Item 1',
 						'content' => 'Content for item 1',
-						'open' => false
+						'open' => false,
+						'emoji' => ''
 					)
 				)
 			),

@@ -13,12 +13,13 @@
 		font-weight: 600;
 		list-style: none;
 		position: relative;
-		padding-left: 35px;
+		padding-left: 40px;
 
 		&::-webkit-details-marker {
 			display: none;
 		}
 
+		// Default arrow when no emoji is set
 		&::before {
 			content: '▶';
 			position: absolute;
@@ -26,6 +27,20 @@
 			top: 50%;
 			transform: translateY(-50%);
 			transition: transform 0.2s;
+		}
+
+		// Hide default arrow when emoji is present
+		.accordion-emoji + span ~ &::before,
+		&:has(.accordion-emoji)::before {
+			display: none;
+		}
+
+		.accordion-emoji {
+			position: absolute;
+			left: 15px;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 1.2em;
 		}
 
 		&:hover {

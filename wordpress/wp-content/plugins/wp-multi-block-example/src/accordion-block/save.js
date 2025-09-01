@@ -91,6 +91,9 @@ export default function save({ attributes }) {
 				{items.map((item, index) => (
 					<details key={index} className="accordion-item" open={item.open}>
 						<summary className="accordion-summary">
+							{item.emoji && (
+								<span className="accordion-emoji">{item.emoji}</span>
+							)}
 							<RichText.Content
 								tagName="span"
 								value={item.title}
