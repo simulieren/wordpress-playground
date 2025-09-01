@@ -1,0 +1,51 @@
+---
+description: Guidelines for creating new WordPress blocks in the multi-block plugin
+---
+
+# Creating New WordPress Blocks
+
+## Quick Block Creation
+Generate a new block without creating a new plugin:
+```bash
+npx @wordpress/create-block block-name --no-plugin
+```
+
+## Integration Steps
+1. Move generated block to `src/blocks/block-name/`
+2. Add block name to `$custom_blocks` array in main plugin file
+3. Run `npm run build` to compile the new block
+4. Test in WordPress admin
+
+## Block Architecture
+### Required Files
+- `block.json` - Block metadata, attributes, and settings
+- `index.js` - Block registration and imports
+- `edit.js` - Editor component (React/JSX with TypeScript support)
+- `save.js` - Frontend render function
+
+### Optional Files  
+- `editor.scss` - Editor-only styles
+- `style.scss` - Frontend and editor styles
+- `view.js` - Frontend interactivity
+
+### Block.json Configuration
+Key properties to configure:
+```json
+{
+  "apiVersion": 3,
+  "name": "namespace/block-name",
+  "title": "Block Title",
+  "category": "widgets",
+  "textdomain": "wp-multi-block-example",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css", 
+  "style": "file:./style-index.css"
+}
+```
+
+## Development Best Practices
+- Use consistent text domain across all blocks
+- Follow WordPress coding standards
+- Implement proper TypeScript types for attributes
+- Use React functional components with hooks
+- Apply TailwindCSS for styling consistency

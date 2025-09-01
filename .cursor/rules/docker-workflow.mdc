@@ -1,0 +1,23 @@
+---
+globs: docker-compose.yml,Dockerfile,*.dockerfile
+---
+
+# Docker Development Workflow
+
+This project uses Docker Compose for the WordPress development environment.
+
+## Container Management
+- WordPress container mounts [wordpress/](mdc:wordpress/) directory as a volume
+- Changes to local files are immediately reflected in the running container
+- MySQL data persists in Docker volume `mysql_data`
+
+## Development Workflow
+1. Always ensure containers are running before accessing WordPress at `http://localhost:8000`
+2. Use `docker-compose logs -f wordpress` to debug issues
+3. For database access, connect to `localhost:3306` with credentials: root/root
+4. Container restarts preserve both WordPress files and database data
+
+## Configuration
+- [docker-compose.yml](mdc:docker-compose.yml) defines the service configuration
+- [wordpress/wp-config.php](mdc:wordpress/wp-config.php) contains WordPress-specific settings
+- Environment variables can be set in docker-compose.yml for configuration management

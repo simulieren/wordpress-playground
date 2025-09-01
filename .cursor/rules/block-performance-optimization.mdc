@@ -1,0 +1,56 @@
+---
+description: Performance optimization strategies for WordPress blocks
+---
+
+# WordPress Block Performance Optimization
+
+## Asset Optimization
+### Combined Assets for Production
+Create entry point files to reduce HTTP requests:
+
+#### Editor Assets
+```javascript
+// multi-block-editor.js
+import './blocks/block-one/index.js';
+import './blocks/block-two/index.js';
+// Import all block editor scripts
+```
+
+#### Frontend Assets  
+```javascript
+// multi-block-frontend.js
+import './blocks/block-one/view.js';
+import './blocks/block-two/view.js';
+// Import all frontend scripts
+```
+
+### Enqueuing Combined Assets
+```php
+function multiblock_enqueue_combined_assets() {
+    wp_enqueue_script(
+        'multiblock-editor',
+        plugin_dir_url( __FILE__ ) . 'build/multi-block-editor.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor' ),
+        filemtime( plugin_dir_path( __FILE__ ) . 'build/multi-block-editor.js' )
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'multiblock_enqueue_combined_assets' );
+```
+
+## Build Optimizations
+- Use `--blocks-manifest` flag for proper multi-block builds
+- Clean `block.json` files by removing unnecessary file references when combining assets
+- Minimize and compress assets for production
+- Use tree shaking to eliminate unused code
+
+## Performance Best Practices
+1. **Lazy Loading**: Load block assets only when needed
+2. **Code Splitting**: Separate editor and frontend code
+3. **Asset Versioning**: Use `filemtime()` for cache busting
+4. **Dependency Management**: Only include necessary WordPress dependencies
+5. **CSS Optimization**: Use critical CSS for above-the-fold content
+
+## Monitoring
+- Monitor bundle sizes with webpack-bundle-analyzer
+- Test performance with WordPress performance profiling tools
+- Validate Core Web Vitals impact of blocks

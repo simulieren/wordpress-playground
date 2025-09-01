@@ -1,0 +1,42 @@
+---
+globs: wordpress/wp-content/plugins/**/package.json,wordpress/wp-content/plugins/**/webpack.config.js,wordpress/wp-content/plugins/**/.babelrc
+---
+
+# WordPress Gutenberg Build System
+
+## NPM Scripts for Block Development
+Essential scripts for multi-block plugin development:
+
+```json
+{
+  "scripts": {
+    "build": "wp-scripts build --blocks-manifest",
+    "start": "wp-scripts start --blocks-manifest", 
+    "format": "wp-scripts format",
+    "lint:js": "wp-scripts lint-js",
+    "lint:css": "wp-scripts lint-style"
+  }
+}
+```
+
+## Build Configuration
+- **Critical**: Always use `--blocks-manifest` flag for multi-block plugins
+- Creates `build/blocks.json` manifest file required for WordPress registration
+- Compiles all blocks to `build/blocks/[block-name]/` directories
+
+## Asset Management
+### Development
+- Use `npm run start` for development with hot reload
+- Assets compiled to `build/` directory
+- Each block gets individual asset files
+
+### Production Optimization
+Consider creating entry point files for combined assets:
+- `multi-block-editor.js` - Combined editor scripts
+- `multi-block-frontend.js` - Combined frontend scripts
+- `multi-block-styles.css` - Combined styles
+
+## Dependencies
+- Use `@wordpress/scripts` for build tooling
+- Common WordPress packages: `wp-blocks`, `wp-element`, `wp-editor`, `wp-components`
+- All blocks share same `package.json` dependencies

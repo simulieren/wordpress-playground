@@ -1,0 +1,66 @@
+---
+globs: wordpress/wp-content/plugins/**/src/**/*.js,wordpress/wp-content/plugins/**/src/**/*.jsx,wordpress/wp-content/plugins/**/src/**/*.ts,wordpress/wp-content/plugins/**/src/**/*.tsx
+---
+
+# React & TypeScript in WordPress Blocks
+
+## Component Development
+Use modern React patterns with WordPress block development:
+
+### Edit Component (Editor)
+```jsx
+import { useBlockProps } from '@wordpress/block-editor';
+
+export default function Edit({ attributes, setAttributes }) {
+    const blockProps = useBlockProps({
+        className: 'wp-block-namespace-block-name'
+    });
+    
+    return (
+        <div {...blockProps}>
+            {/* Editor interface using React components */}
+        </div>
+    );
+}
+```
+
+### Save Component (Frontend)
+```jsx
+import { useBlockProps } from '@wordpress/block-editor';
+
+export default function Save({ attributes }) {
+    const blockProps = useBlockProps.save({
+        className: 'wp-block-namespace-block-name'
+    });
+    
+    return (
+        <div {...blockProps}>
+            {/* Frontend output */}
+        </div>
+    );
+}
+```
+
+## TypeScript Integration
+- Use TypeScript for type safety in block development
+- Define interfaces for block attributes
+- Type WordPress hooks and components properly
+- Leverage WordPress TypeScript definitions
+
+## Styling with TailwindCSS
+- Use TailwindCSS classes for consistent styling
+- Apply responsive design patterns
+- Combine with WordPress block editor styles
+- Use CSS custom properties for theme integration
+
+## WordPress Components
+Import and use WordPress React components:
+- `@wordpress/components` - UI components
+- `@wordpress/block-editor` - Block editor components  
+- `@wordpress/element` - React utilities
+- `@wordpress/i18n` - Internationalization
+
+## State Management
+- Use React hooks (`useState`, `useEffect`) for local state
+- Use block attributes for persistent data
+- Leverage WordPress data store for global state when needed

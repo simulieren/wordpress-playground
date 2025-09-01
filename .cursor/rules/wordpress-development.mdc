@@ -1,0 +1,26 @@
+---
+globs: wordpress/wp-content/themes/**/*.php,wordpress/wp-content/plugins/**/*.php
+---
+
+# WordPress Theme and Plugin Development Guidelines
+
+## Theme Development
+When working in [wordpress/wp-content/themes/](mdc:wordpress/wp-content/themes/):
+- New themes need at minimum `style.css` (with theme header) and `index.php`
+- Follow WordPress coding standards for PHP
+- Use proper WordPress hooks and filters
+- Enqueue scripts and styles properly using `wp_enqueue_script()` and `wp_enqueue_style()`
+
+## Plugin Development  
+When working in [wordpress/wp-content/plugins/](mdc:wordpress/wp-content/plugins/):
+- Include proper plugin headers in main PHP file
+- Use WordPress hooks (`add_action`, `add_filter`) for functionality
+- Follow WordPress security best practices (nonces, sanitization, validation)
+- Use WordPress database functions (`$wpdb`, `get_option`, etc.)
+
+## WordPress Best Practices
+- Always escape output using `esc_html()`, `esc_attr()`, `esc_url()`
+- Sanitize input data
+- Use WordPress conditional tags (`is_home()`, `is_single()`, etc.)
+- Leverage WordPress template hierarchy
+- Use WordPress coding standards for naming (underscores, not camelCase for functions/variables)

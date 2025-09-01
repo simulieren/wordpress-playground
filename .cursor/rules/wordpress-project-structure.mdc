@@ -1,0 +1,24 @@
+---
+alwaysApply: true
+---
+
+# WordPress Docker Development Environment
+
+This is a WordPress development environment using Docker Compose. Key project structure:
+
+- [docker-compose.yml](mdc:docker-compose.yml) - Docker configuration for WordPress and MySQL services
+- [wordpress/](mdc:wordpress/) - Local WordPress installation directory (mounted to container)
+  - [wordpress/wp-config.php](mdc:wordpress/wp-config.php) - Main WordPress configuration
+  - [wordpress/wp-content/themes/](mdc:wordpress/wp-content/themes/) - WordPress themes
+  - [wordpress/wp-content/plugins/](mdc:wordpress/wp-content/plugins/) - WordPress plugins
+
+## Environment Details
+- WordPress runs on `http://localhost:8000`
+- Database: `wordpress` (user: `root`, password: `root`, host: `db`)
+- All changes to `wordpress/` directory are immediately reflected in the container
+
+## Docker Commands
+- Start: `docker-compose up -d`
+- Stop: `docker-compose down`  
+- Logs: `docker-compose logs -f wordpress`
+- Rebuild: `docker-compose down && docker-compose up -d --build`

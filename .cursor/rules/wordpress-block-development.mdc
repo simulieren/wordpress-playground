@@ -1,0 +1,46 @@
+---
+globs: wordpress/wp-content/plugins/**/src/**/*,wordpress/wp-content/plugins/**/build/**/*,wordpress/wp-content/plugins/**/*.php
+---
+
+# WordPress Block Development Guidelines
+
+This project includes a multi-block WordPress plugin following modern Gutenberg development practices.
+
+## Multi-Block Plugin Structure
+- [wordpress/wp-content/plugins/wp-multi-block-example/](mdc:wordpress/wp-content/plugins/wp-multi-block-example/) - Main plugin directory
+- `src/blocks/` - Source files for all blocks
+- `build/` - Compiled assets (auto-generated, git-ignored)
+- `build/blocks.json` - Block manifest for WordPress registration
+
+## Block Registration Pattern
+Use dynamic array-based registration in main plugin file:
+```php
+function multiblock_register_blocks() {
+    $custom_blocks = array(
+        'block-one',
+        'block-two',
+        // Add new blocks to this array
+    );
+    
+    foreach ( $custom_blocks as $block ) {
+        register_block_type( __DIR__ . '/build/blocks/' . $block );
+    }
+}
+add_action( 'init', 'multiblock_register_blocks' );
+```
+
+## Development Workflow
+1. Create blocks in `src/blocks/[block-name]/`
+2. Add block name to `$custom_blocks` array in main plugin file
+3. Run `npm run build` to compile (uses `--blocks-manifest` flag)
+4. Test in WordPress admin
+
+## Block Structure
+Each block should have:
+- `block.json` - Block metadata & configuration
+- `index.js` - Block registration & setup
+- `edit.js` - Editor component (React/JSX)
+- `save.js` - Frontend render function
+- `editor.scss` - Editor-only styles
+- `style.scss` - Frontend & editor styles
+- `view.js` - Frontend JavaScript (optional)

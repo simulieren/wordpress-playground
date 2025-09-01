@@ -1,0 +1,30 @@
+---
+globs: wordpress/wp-config*.php
+---
+
+# WordPress Configuration Management
+
+## Configuration Files
+- [wordpress/wp-config.php](mdc:wordpress/wp-config.php) - Main WordPress configuration
+- [wordpress/wp-config-docker.php](mdc:wordpress/wp-config-docker.php) - Docker-specific config
+- [wordpress/wp-config-sample.php](mdc:wordpress/wp-config-sample.php) - Sample configuration
+
+## Database Configuration
+```php
+// Database settings for this Docker environment
+define('DB_NAME', 'wordpress');
+define('DB_USER', 'root');
+define('DB_PASSWORD', 'root');
+define('DB_HOST', 'db'); // Docker service name
+```
+
+## Development Settings
+- Enable `WP_DEBUG` for development
+- Set appropriate `WP_DEBUG_LOG` and `WP_DEBUG_DISPLAY` values
+- Use `SCRIPT_DEBUG` for unminified assets during development
+- Consider setting `WP_ENVIRONMENT_TYPE` to 'development'
+
+## Security Considerations
+- Generate unique authentication keys and salts
+- Never commit sensitive credentials to version control
+- Use environment variables for sensitive configuration when possible

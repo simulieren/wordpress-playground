@@ -1,0 +1,29 @@
+---
+globs: wordpress/wp-content/**/*.js,wordpress/wp-content/**/*.css,wordpress/wp-content/**/*.ts,wordpress/wp-content/**/*.tsx
+---
+
+# Frontend Asset Development
+
+When working with JavaScript, CSS, TypeScript, or React files in WordPress:
+
+## Technology Stack
+- Use **TailwindCSS** for styling
+- Use **React** for component-based development  
+- Use **TypeScript** for type safety
+
+## WordPress Integration
+- Enqueue assets properly using `wp_enqueue_script()` and `wp_enqueue_style()`
+- Use `wp_localize_script()` to pass data from PHP to JavaScript
+- Follow WordPress JavaScript coding standards
+- Use WordPress REST API for AJAX requests when possible
+
+## Asset Organization
+- Place theme assets in `wordpress/wp-content/themes/[theme-name]/assets/`
+- Place plugin assets in `wordpress/wp-content/plugins/[plugin-name]/assets/`
+- Use proper versioning for cache busting
+- Minify assets for production
+
+## Development Notes
+- Changes to assets require proper enqueueing in WordPress
+- Use `wp_add_inline_script()` for small JavaScript snippets
+- Consider using WordPress Block Editor (Gutenberg) patterns for modern WordPress development
